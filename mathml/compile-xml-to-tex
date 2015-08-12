@@ -1,0 +1,7 @@
+#!/bin/bash
+# parse dos arquivos xml para tex
+for file in `find xml/ -type f -name "*.xml"`
+do
+	texname=`echo $file | sed -r "s/\.xml$/\.tex/gi"`
+	java -jar saxon9he.jar "$file" pmml2tex.xsl > "$texname"
+done

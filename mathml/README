@@ -1,0 +1,20 @@
+MathML to Latex conversion example
+
+=================================================================
+
+First execute the file "compile-xml-to-tex". 
+It will convert the xml files into tex files using the saxon lib and David Carlisle xlst.
+
+Saxon
+http://sourceforge.net/projects/saxon/files/
+
+Xslt
+https://github.com/davidcarlisle/web-xslt/tree/master/pmml2tex
+
+e.g.
+java -jar saxon9he.jar file.xml pmml2tex.xsl > file.tex
+
+Then run the "make" command to compile the template.tex file.
+
+Run the PDF
+evince template.pdf
