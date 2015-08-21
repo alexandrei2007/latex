@@ -1,0 +1,24 @@
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{color}
+\usepackage{lmodern}
+\usepackage{layouts}
+\usepackage{showframe} % grid
+
+\begin{document}
+
+\par Original Article: 
+http://tex.stackexchange.com/questions/181049/how-to-show-margin-distances-in-mm
+
+\par
+\printinunitsof{mm}{\pagevalues}
+
+\verb|\marginparwidth|: \printinunitsof{mm}\prntlen{\marginparwidth}
+
+\pagediagram
+
+\end{document}
