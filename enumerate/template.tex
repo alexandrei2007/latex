@@ -1,0 +1,102 @@
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{enumitem}
+
+\begin{document}
+
+\noindent{}\textbf{Exemplo de listas usando o package 'enumerate'}\\
+\textbackslash{}usepackage\{enumerate\}\\
+\\
+\textbf{Tipos de labels}\\
+\textbackslash{}Alph*\\
+\textbackslash{}alph*\\
+\textbackslash{}Roman*\\
+\textbackslash{}roman*\\
+\textbackslash{}arabic*\\
+\textbackslash{}textbullet\\
+\{\}\\
+\\
+\textbf{Exemplo}\\
+\textbackslash{}begin\{enumerate\}[label=\{\textbackslash{}alph*\},leftmargin=*]\\
+	\textbackslash{}item Item 1\\
+	\textbackslash{}item Item 2\\
+	\textbackslash{}item Item 3\\
+\textbackslash{}end\{enumerate\}\\
+\\
+\textbf{Enumerate suporta no máximo 4 listas encadeadas}\\
+Para suportar mais é necessário criar uma nova lista:\\
+\\
+\textbackslash{}setlistdepth\{5\}\\
+\textbackslash{}newlist\{customEnumerate\}\{enumerate\}\{5\}\\
+\textbackslash{}setlist[customEnumerate,1]\{label=\textbackslash{}alph*\}\\
+\textbackslash{}setlist[customEnumerate,2]\{label=\textbackslash{}alph*\}\\
+\textbackslash{}setlist[customEnumerate,3]\{label=\textbackslash{}alph*\}\\
+\textbackslash{}setlist[customEnumerate,4]\{label=\textbackslash{}alph*\}\\
+\textbackslash{}setlist[customEnumerate,5]\{label=\textbackslash{}alph*\}\\
+\\
+
+% custom list
+
+\setlistdepth{5}
+\newlist{customEnumerate}{enumerate}{5}
+\setlist[customEnumerate,1]{label=\alph*}
+\setlist[customEnumerate,2]{label=\alph*}
+\setlist[customEnumerate,3]{label=\alph*}
+\setlist[customEnumerate,4]{label=\alph*}
+\setlist[customEnumerate,5]{label=\alph*}
+
+\noindent\textbf{Mais de 4 níveis}
+\begin{customEnumerate}
+	\item Item 1
+
+	\begin{customEnumerate}
+		\item Item 2
+		\begin{customEnumerate}
+			\item Item 3
+			\begin{customEnumerate}
+				\item Item 4
+				\begin{customEnumerate}
+					\item Item 5
+				\end{customEnumerate}
+			\end{customEnumerate}
+		\end{customEnumerate}
+	\end{customEnumerate}
+
+	\item \par Item 6
+	\item \par Item 7
+\end{customEnumerate}
+
+\noindent\textbf{Lista numérica}
+\begin{enumerate}[label=\arabic*]	
+	\item Item 1
+	\begin{enumerate}[label=\arabic*]	
+		\item Item 1.1
+		\begin{enumerate}[label=\arabic*]	
+			\item Item 1.1.1
+		\end{enumerate}
+		\item Item 1.2
+	\end{enumerate}
+	\item Item 2
+	\item Item 3
+\end{enumerate}
+
+\noindent\textbf{Lista sem label e sem espaçamento}
+\begin{enumerate}[label={},leftmargin=*,topsep=0cm,itemsep=0cm,parsep=0cm,labelsep=0cm]
+	\item Item 1
+	\begin{enumerate}[label={},leftmargin=*,topsep=0cm,itemsep=0cm,parsep=0cm,labelsep=0cm]
+		\item Item 1.1
+		\begin{enumerate}[label={},leftmargin=*,topsep=0cm,itemsep=0cm,parsep=0cm,labelsep=0cm]
+			\item Item 1.1.1
+		\end{enumerate}
+		\item Item 1.2
+	\end{enumerate}
+	\item Item 2
+	\item Item 3
+\end{enumerate}
+
+
+\end{document}
