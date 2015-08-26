@@ -1,0 +1,44 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{lipsum}
+\usepackage{verse}
+
+\makeatletter
+
+% attrib verse
+\newcommand{\attrib}[1]{%
+\nopagebreak{\raggedleft\footnotesize #1\par}}
+\renewcommand{\poemtitlefont}{\normalfont\large\itshape\centering}
+
+
+\begin{document}
+
+\lipsum
+
+\poemtitle{Título do poema}
+
+\begin{verse}[\textwidth]
+
+verso 1\\ 
+verso 2\\ 
+verso 3\\ 
+verso 4
+
+verso 1\\ 
+verso 2\\ 
+verso 3\\ 
+verso 4
+
+\hfill \\
+\attrib{nome do autor}
+
+\end{verse}
+
+\lipsum
+
+
+
+\end{document}

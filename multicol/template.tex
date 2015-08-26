@@ -1,0 +1,385 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{multicol, caption, float}
+
+\usepackage{lipsum}
+\usepackage{abstract}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{seqsplit}
+\usepackage[svgnames]{xcolor}  
+\usepackage{amssymb,amsmath}
+
+\usepackage{ctable}
+\usepackage{longtable}
+\usepackage{pdflscape}
+\usepackage{verse}
+
+% davidcarlisle style
+\usepackage{bm}
+\usepackage{pmml-new}
+%\usepackage{csscolor}
+
+\makeatletter
+
+% attrib verse
+\newcommand{\attrib}[1]{%
+\nopagebreak{\raggedleft\footnotesize #1\par}}
+\renewcommand{\poemtitlefont}{\normalfont\large\itshape\centering}
+
+% START ctable + longtable (tabela em múltiplas páginas)
+% http://tex.stackexchange.com/questions/88304/multipage-tables-with-ctable-package
+\newif\if@ctbl@long
+\define@key{ctbl}{long}[]{\@ctbl@longtrue}
+
+\long\def\foo#1\sbox#2!!{%
+\long\expandafter\def\csname\string\ctable\endcsname[##1]##2##3##4{%
+#1\if@ctbl@long\ctbl@long\fi\sbox#2}}
+
+
+
+\expandafter\expandafter\expandafter\foo
+\csname\string\ctable\endcsname[#1]{#2}{#3}{#4}!!
+
+
+\def\ctbl@long\fi\sbox#1#2#3\@ctblend{\fi
+\ctbl@@long#2%
+}
+
+
+\long\def\ctbl@@long#1#2#3#4#5#6{%
+\ctbl@@@long#6%
+}
+
+\def\ctbl@@@long#1\begin#2#3#4\end#5{%
+\def\@tempa{#5}%
+\def\@tempb{tabular}%
+\ifx\@tempa\@tempb\else\show\@tempa\ERROR\fi
+\begin{longtable}{#3}%
+\caption{\@ctblcaption\ifx\@ctbllabel\empty\else\label{\@ctbllabel}\fi}%
+\endfirsthead
+\caption*{\@ctblcaption\space(continued)}%
+\endhead
+#4\end{longtable}}
+% END ctable + longtable
+
+\begin{document}
+
+
+\begin{multicols}{2}
+
+% teste com abstract
+\begin{abstract}
+	\lipsum END ABS1
+\end{abstract}
+
+\begin{abstract}
+	\lipsum END ABS2
+\end{abstract}
+
+\end{multicols}
+
+
+
+\begin{multicols}{2}
+\lipsum END1
+
+
+
+
+% teste com imagem dentro de 1 coluna
+\begin{figure}[H]
+
+	\centering
+
+	\includegraphics[width=\columnwidth,keepaspectratio]{image.png}
+	\captionof{figure}{Caption da imagem} 
+	\label{Label da imagem} 
+
+\end{figure}
+
+\lipsum END2
+
+
+
+
+% teste com imagem que ocupa 2 colunas
+% não precisa quebrar o multicols
+\begin{figure*}[!ht]
+
+	\centering
+
+	\includegraphics[width=\textwidth,keepaspectratio]{image.png}
+	\caption{Caption da imagem} 
+	\label{Label da imagem} 
+
+\end{figure*}
+
+\lipsum END 3
+
+\par Iste architecto veritatis consequatur sit eaque fugit. Enim quae aut quidem et facilis. Ratione saepe veritatis voluptas vero voluptatem exercitationem ut. Exercitationem ut quia quis provident. \includegraphics[width=0.15\columnwidth,keepaspectratio]{image.png} Nisi aliquam inventore atque alias qui doloribus numquam libero. Quae aliquid sint et. Quos et dolores ipsa rem. Ea iure voluptatibus vero quo et. Occaecati doloribus numquam incidunt sunt ut aspernatur quasi ad.
+
+
+\end{multicols}
+
+
+
+
+% exemplo de lista em uma coluna
+\par Iste architecto veritatis consequatur sit eaque fugit. Enim quae aut quidem et facilis. Ratione saepe veritatis voluptas vero voluptatem exercitationem ut. Exercitationem ut quia quis provident. \
+
+\begin{enumerate}
+
+	\item Item 1
+	\item Item 2
+	\item Item 3
+	\item Item 4
+	\item Item 5
+	\item Item 6
+	\item Item 7
+	\item Item 8
+	\item Item 9
+	\item Item 10
+	\item Item 11
+	\item Item 12
+	\item Item 13
+	\item Item 14
+	\item Item 15
+	\item Item 16
+	\item Item 17
+	\item Item 18
+	\item Item 19
+	\item Item 20
+	\item Item 21
+	\item Item 22
+	\item Item 23
+	\item Item 24
+	\item Item 25
+	\item Item 26
+	\item Item 27
+	\item Item 28
+	\item Item 29
+	\item Item 30
+
+
+\end{enumerate}
+
+
+
+
+% exemplo de lista em um duas colunas
+\begin{multicols}{2}
+
+\begin{enumerate}
+
+	\item Item 1
+	\item Item 2
+	\item Item 3
+	\item Item 4
+	\item Item 5
+	\item Item 6
+	\item Item 7
+	\item Item 8
+	\item Item 9
+	\item Item 10
+	\item Item 11
+	\item Item 12
+	\item Item 13
+	\item Item 14
+	\item Item 15
+	\item Item 16
+	\item Item 17
+	\item Item 18
+	\item Item 19
+	\item Item 20
+	\item Item 21
+	\item Item 22
+	\item Item 23
+	\item Item 24
+	\item Item 25
+	\item Item 26
+	\item Item 27
+	\item Item 28
+	\item Item 29
+	\item Item 30
+
+
+\end{enumerate}
+
+\lipsum
+
+
+
+
+
+% exemplo texto grande, quebrando com seqsplit
+\seqsplit{https://www.google.com.br/?gfexrd=crxei=a-zdVYykNeup8we5xYvIAwagwsard=sslxq=latexxmk}
+
+\lipsum
+
+\end{multicols}
+
+
+% exemplo com formulas matematicas
+
+\par Illo reprehenderit sit et consequatur quo magni non. Perspiciatis eveniet sed et ullam dolores iste sequi. Similique quos eligendi autem maxime. Recusandae et dolores id omnis id molestias. Quis expedita illo nesciunt reprehenderit nesciunt occaecati in.
+
+    \section{Formula1}
+    \input{mathml/formula1.tex}
+
+    \section{Formula2}
+    \input{mathml/formula2.tex}
+
+    \section{Formula3}
+    \input{mathml/formula3.tex}
+
+    \section{Formula4}
+    \input{mathml/formula4.tex}
+
+    \section{Formula5}
+    \input{mathml/formula5.tex}
+
+\lipsum
+
+% remove padding entre colunas
+\setlength\tabcolsep{0cm}
+
+\ctable[
+	caption = {Caption da tabela}, 
+	width=\textwidth, pos = ht, left
+]
+{
+	p{0.3\textwidth}
+	p{0.4\textwidth}
+	p{0.3\textwidth}
+}
+{}
+{
+	\multicolumn{1}{p{0.3\textwidth}}{\textbf{Coluna 1}} &
+	\multicolumn{1}{p{0.4\textwidth}}{\centering\textbf{Coluna 2}} & 
+	\multicolumn{1}{p{0.3\textwidth}}{\raggedleft\textbf{Coluna 3}}
+	\\\hline
+	\multicolumn{1}{p{0.3\textwidth}}{Explicabo quod ut voluptate culpa quis aut a. Illum cupiditate quia excepturi magni itaque id optio.} &
+	\multicolumn{1}{p{0.4\textwidth}}{\centering{Aut ipsum et ipsa soluta delectus unde.}} & 
+	\multicolumn{1}{p{0.3\textwidth}}{\raggedleft{Modi quam rerum perspiciatis rerum consequatur est. Dolores}}
+	\\\hline
+	\multicolumn{3}{p{\textwidth}}{\textsuperscript{1} \footnotesize{Nota de rodapé 1}}\\
+	\multicolumn{3}{p{\textwidth}}{\textsuperscript{1} \footnotesize{Nota de rodapé 2}}
+}
+
+\lipsum
+
+\begin{landscape}
+
+% quando se rotaciona a tabela é necessário usar \linewidth
+% ao invés de \textwidth
+\ctable[
+	caption = {Caption da tabela}, 
+	width=\linewidth{}, pos = ht, left, long
+]
+{
+	p{0.1\linewidth}p{0.1\linewidth}p{0.1\linewidth}
+	p{0.1\linewidth}p{0.1\linewidth}p{0.1\linewidth}
+	p{0.1\linewidth}p{0.1\linewidth}p{0.1\linewidth}
+	p{0.1\linewidth}
+}
+{}
+{
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 1}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 2}} & 
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 3}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 4}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 5}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 6}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 7}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 8}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 9}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 10}}
+	\\\hline
+	\multicolumn{10}{p{\linewidth}}{Sed vehicula hendrerit sem. Duis non odio. Morbi ut dui. Sed accumsan
+risus eget odio. In hac habitasse platea dictumst. Pellentesque non elit.
+Fusce sed justo eu urna porta tincidunt. Mauris felis odio, sollicitudin sed,
+volutpat a, ornare ac, erat. Morbi quis dolor. Donec pellentesque, erat ac
+sagittis semper, nunc dui lobortis purus, quis congue purus metus ultricies
+tellus. Proin et quam. Class aptent taciti sociosqu ad litora torquent per
+conubia nostra, per inceptos hymenaeos. Praesent sapien turpis, fermentum
+vel, eleifend faucibus, vehicula eu, lacus.}
+	\\\hline
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 1}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{ed vehicula hendrerit sem. Duis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst.}} & 
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 3}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{ed vehicula hendrerit sem. Duis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst.}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 5}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 6}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 7}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 8}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 9}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{start ed vehicula hendrerit sem. Duis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst. ed vehicula hendrerit sem. Duis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst. end}}
+	\\\hline
+	\multicolumn{10}{p{\linewidth}}{\textsuperscript{1} \footnotesize{Nota de rodapé 1}}\\
+	\multicolumn{10}{p{\linewidth}}{\textsuperscript{1} \footnotesize{Nota de rodapé 2}}
+}
+
+\end{landscape}
+
+
+% verse
+
+\begin{multicols}{2}
+
+uis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst uis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst
+
+\poemtitle{Título do poema}
+
+\begin{verse}[\textwidth]
+
+verso 1\\ 
+verso 2\\ 
+verso 3\\ 
+verso 4
+
+verso 1\\ 
+verso 2\\ 
+verso 3\\ 
+verso 4
+
+\hfill \\
+\attrib{nome do autor}
+
+\end{verse}
+
+uis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst uis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst uis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst
+
+\end{multicols}
+
+
+% verse em 1 coluna
+
+uis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst uis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst
+
+\poemtitle{Título do poema}
+
+\begin{verse}[\textwidth]
+
+verso 1\\ 
+verso 2\\ 
+verso 3\\ 
+verso 4
+
+verso 1\\ 
+verso 2\\ 
+verso 3\\ 
+verso 4
+
+\hfill \\
+\attrib{nome do autor}
+
+\end{verse}
+
+uis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst uis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst uis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst
+
+
+\end{document}

@@ -5,11 +5,15 @@
 
 \usepackage{ctable}
 \usepackage{longtable}
-% \usepackage{pbox}
-% \usepackage{array}
-% \usepackage{caption}
-% \usepackage{multirow}
-% \usepackage{rotating}
+
+\usepackage{lipsum}
+
+%\usepackage{pbox}
+%\usepackage{array}
+%\usepackage{caption}
+%\usepackage{multirow}
+%\usepackage{rotating}
+\usepackage{pdflscape}
 
 \makeatletter
 
@@ -49,34 +53,113 @@
 #4\end{longtable}}
 % END ctable + longtable
 
+
+
 \begin{document}
 
 \noindent{}\textbf{Exemplo de tabela}\\
 \\ usa o package \textbackslash{ctable}
 \\ usa o package \textbackslash{longtable}
+\noindent\\
+\noindent\\
+Sed commodo posuere pede. Mauris ut est. Ut quis purus. Sed ac odio.
+Sed vehicula hendrerit sem. Duis non odio. Morbi ut dui. Sed accumsan
+risus eget odio. In hac habitasse platea dictumst. Pellentesque non elit.
+Fusce sed justo eu urna porta tincidunt. Mauris felis odio, sollicitudin sed,
+volutpat a, ornare ac, erat. Morbi quis dolor. Donec pellentesque, erat ac
+sagittis semper, nunc dui lobortis purus, quis congue purus metus ultricies
+tellus. Proin et quam. Class aptent taciti sociosqu ad litora torquent per
+conubia nostra, per inceptos hymenaeos. Praesent sapien turpis, fermentum
+vel, eleifend faucibus, vehicula eu, lacus.
 
-ctable[
+% remove padding entre colunas
+\setlength\tabcolsep{0cm}
+
+\ctable[
 	caption = {Caption da tabela}, 
 	width=\textwidth, pos = ht, left, long
 ]
-% colunas
 {
 	p{0.3\textwidth}
 	p{0.4\textwidth}
 	p{0.3\textwidth}
 }
+{}
 {
-	{\multicolumn{1}{p{0.3\textwidth}}{\textbf{Coluna 1}}} &
-	{\multicolumn{1}{p{0.4\textwidth}}{\centering\textbf{Coluna 2}}} & 
-	{\multicolumn{1}{p{0.3\textwidth}}{\raggedleft\textbf{Coluna 3}}}
-	\\hline
-	{\multicolumn{1}{p{0.3\textwidth}}{Coluna 1}} &
-	{\multicolumn{1}{p{0.4\textwidth}}{\centering{}Coluna 2}} & 
-	{\multicolumn{1}{p{0.3\textwidth}}{\raggedleft{}Coluna 3}}
-
-	% footnotes
-	\multicolumn{3}{p\textwidth}{\textsuperscript{1} \footnotesize{Nota de rodapé 1}}
-	\multicolumn{3}{p\textwidth}{\textsuperscript{1} \footnotesize{Nota de rodapé 2}}
+	\multicolumn{1}{p{0.3\textwidth}}{\textbf{Coluna 1}} &
+	\multicolumn{1}{p{0.4\textwidth}}{\centering\textbf{Coluna 2}} & 
+	\multicolumn{1}{p{0.3\textwidth}}{\raggedleft\textbf{Coluna 3}}
+	\\\hline
+	\multicolumn{1}{p{0.3\textwidth}}{Explicabo quod ut voluptate culpa quis aut a. Illum cupiditate quia excepturi magni itaque id optio.} &
+	\multicolumn{1}{p{0.4\textwidth}}{\centering{Aut ipsum et ipsa soluta delectus unde.}} & 
+	\multicolumn{1}{p{0.3\textwidth}}{\raggedleft{Modi quam rerum perspiciatis rerum consequatur est. Dolores}}
+	\\\hline
+	\multicolumn{3}{p{\textwidth}}{\textsuperscript{1} \footnotesize{Nota de rodapé 1}}\\
+	\multicolumn{3}{p{\textwidth}}{\textsuperscript{1} \footnotesize{Nota de rodapé 2}}
 }
+
+Sed commodo posuere pede. Mauris ut est. Ut quis purus. Sed ac odio.
+Sed vehicula hendrerit sem. Duis non odio. Morbi ut dui. Sed accumsan
+risus eget odio. In hac habitasse platea dictumst. Pellentesque non elit.
+Fusce sed justo eu urna porta tincidunt. Mauris felis odio, sollicitudin sed,
+volutpat a, ornare ac, erat. Morbi quis dolor. Donec pellentesque, erat ac
+sagittis semper, nunc dui lobortis purus, quis congue purus metus ultricies
+tellus. Proin et quam. Class aptent taciti sociosqu ad litora torquent per
+conubia nostra, per inceptos hymenaeos. Praesent sapien turpis, fermentum
+vel, eleifend faucibus, vehicula eu, lacus.
+
+\begin{landscape}
+
+% quando se rotaciona a tabela é necessário usar \linewidth
+% ao invés de \textwidth
+\ctable[
+	caption = {Caption da tabela}, 
+	width=\linewidth{}, pos = ht, left, long
+]
+{
+	p{0.1\linewidth}p{0.1\linewidth}p{0.1\linewidth}
+	p{0.1\linewidth}p{0.1\linewidth}p{0.1\linewidth}
+	p{0.1\linewidth}p{0.1\linewidth}p{0.1\linewidth}
+	p{0.1\linewidth}
+}
+{}
+{
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 1}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 2}} & 
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 3}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 4}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 5}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 6}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 7}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 8}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 9}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 10}}
+	\\\hline
+	\multicolumn{10}{p{\linewidth}}{Sed vehicula hendrerit sem. Duis non odio. Morbi ut dui. Sed accumsan
+risus eget odio. In hac habitasse platea dictumst. Pellentesque non elit.
+Fusce sed justo eu urna porta tincidunt. Mauris felis odio, sollicitudin sed,
+volutpat a, ornare ac, erat. Morbi quis dolor. Donec pellentesque, erat ac
+sagittis semper, nunc dui lobortis purus, quis congue purus metus ultricies
+tellus. Proin et quam. Class aptent taciti sociosqu ad litora torquent per
+conubia nostra, per inceptos hymenaeos. Praesent sapien turpis, fermentum
+vel, eleifend faucibus, vehicula eu, lacus.}
+	\\\hline
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 1}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{ed vehicula hendrerit sem. Duis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst.}} & 
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 3}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{ed vehicula hendrerit sem. Duis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst.}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 5}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 6}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 7}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 8}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{Coluna 9}} &
+	\multicolumn{1}{p{0.1\linewidth}}{\centering\textbf{start ed vehicula hendrerit sem. Duis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst. ed vehicula hendrerit sem. Duis non odio. Morbi ut dui. Sed accumsan risus eget odio. In hac habitasse platea dictumst. end}}
+	\\\hline
+	\multicolumn{10}{p{\linewidth}}{\textsuperscript{1} \footnotesize{Nota de rodapé 1}}\\
+	\multicolumn{10}{p{\linewidth}}{\textsuperscript{1} \footnotesize{Nota de rodapé 2}}
+}
+
+\end{landscape}
+
 
 \end{document}
