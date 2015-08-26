@@ -1,12 +1,10 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[12pt,a4paper,twocolumn]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
 \usepackage{lipsum}
 \usepackage{graphicx}
-% \usepackage{array}
-% \usepackage{geometry}
 
 \makeatletter
 
@@ -16,11 +14,31 @@
 \begin{document}
 
 \noindent{}\textbf{Exemplo de imagem}\\
-\\ usa o package \textbackslash{graphicx}
+\\ usa o package \textbackslash{graphicx}\\
 
-% se for onecolumn remover o *
-% \begin{figure}[!ht]
+\noindent\\
+\lipsum
+
+% exemplo de imagem ocupando as duas colunas
 \begin{figure*}[!ht]
+
+	\centering
+
+	\includegraphics[width=\maxwidth{0.8\textwidth},keepaspectratio]{image.png}
+	\caption{Caption da imagem} 
+	\label{Label da imagem} 
+
+\end{figure*}
+
+\lipsum
+
+% exemplo de imagem inline
+\includegraphics[height=1cm,keepaspectratio]{image.png}
+
+\lipsum
+
+% exemplo de imagem onecolumn
+\begin{figure}[!ht]
 
 	\centering
 
@@ -28,13 +46,8 @@
 	\caption{Caption da imagem} 
 	\label{Label da imagem} 
 
-\end{figure*}
+\end{figure}
 
-\noindent\\
-\noindent Imagem inline\\
-\noindent\\
-\lipsum
-\includegraphics[width=\maxwidth{0.5\textwidth}, height=\textheight,keepaspectratio]{image.png}
 \lipsum
 
 \end{document}
