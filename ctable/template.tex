@@ -5,6 +5,7 @@
 
 \usepackage{ctable}
 \usepackage{longtable}
+\usepackage{caption}
 
 \usepackage{lipsum}
 
@@ -54,6 +55,8 @@
 % END ctable + longtable
 
 
+\captionsetup[table]{labelformat=empty}
+
 
 \begin{document}
 
@@ -76,7 +79,7 @@ vel, eleifend faucibus, vehicula eu, lacus.
 \setlength\tabcolsep{0cm}
 
 \ctable[
-	caption = {Caption da tabela}, 
+	caption = {\textbf{Table 1:} Caption da tabela}, 
 	width=\textwidth, pos = ht, left, long
 ]
 {

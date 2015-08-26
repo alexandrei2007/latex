@@ -5,6 +5,7 @@
 
 \usepackage{lipsum}
 \usepackage{graphicx}
+\usepackage{caption} % customizar o label
 
 \makeatletter
 
@@ -25,8 +26,9 @@
 	\centering
 
 	\includegraphics[width=\maxwidth{0.8\textwidth},keepaspectratio]{image.png}
-	\caption{Caption da imagem} 
-	\label{Label da imagem} 
+	% remove o label automático do latex
+	\caption*{\textbf{Imagem 1:} Caption da imagem} 
+	
 
 \end{figure*}
 
@@ -43,8 +45,8 @@
 	\centering
 
 	\includegraphics[width=\maxwidth{0.5\textwidth},keepaspectratio]{image.png}
+	% deixa o latex cuidar do label
 	\caption{Caption da imagem} 
-	\label{Label da imagem} 
 
 \end{figure}
 
