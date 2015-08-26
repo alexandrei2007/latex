@@ -1,0 +1,82 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{ctable}
+\usepackage{longtable}
+% \usepackage{pbox}
+% \usepackage{array}
+% \usepackage{caption}
+% \usepackage{multirow}
+% \usepackage{rotating}
+
+\makeatletter
+
+% START ctable + longtable (tabela em múltiplas páginas)
+% http://tex.stackexchange.com/questions/88304/multipage-tables-with-ctable-package
+\newif\if@ctbl@long
+\define@key{ctbl}{long}[]{\@ctbl@longtrue}
+
+\long\def\foo#1\sbox#2!!{%
+\long\expandafter\def\csname\string\ctable\endcsname[##1]##2##3##4{%
+#1\if@ctbl@long\ctbl@long\fi\sbox#2}}
+
+
+
+\expandafter\expandafter\expandafter\foo
+\csname\string\ctable\endcsname[#1]{#2}{#3}{#4}!!
+
+
+\def\ctbl@long\fi\sbox#1#2#3\@ctblend{\fi
+\ctbl@@long#2%
+}
+
+
+\long\def\ctbl@@long#1#2#3#4#5#6{%
+\ctbl@@@long#6%
+}
+
+\def\ctbl@@@long#1\begin#2#3#4\end#5{%
+\def\@tempa{#5}%
+\def\@tempb{tabular}%
+\ifx\@tempa\@tempb\else\show\@tempa\ERROR\fi
+\begin{longtable}{#3}%
+\caption{\@ctblcaption\ifx\@ctbllabel\empty\else\label{\@ctbllabel}\fi}%
+\endfirsthead
+\caption*{\@ctblcaption\space(continued)}%
+\endhead
+#4\end{longtable}}
+% END ctable + longtable
+
+\begin{document}
+
+\noindent{}\textbf{Exemplo de tabela}\\
+\\ usa o package \textbackslash{ctable}
+\\ usa o package \textbackslash{longtable}
+
+ctable[
+	caption = {Caption da tabela}, 
+	width=\textwidth, pos = ht, left, long
+]
+% colunas
+{
+	p{0.3\textwidth}
+	p{0.4\textwidth}
+	p{0.3\textwidth}
+}
+{
+	{\multicolumn{1}{p{0.3\textwidth}}{\textbf{Coluna 1}}} &
+	{\multicolumn{1}{p{0.4\textwidth}}{\centering\textbf{Coluna 2}}} & 
+	{\multicolumn{1}{p{0.3\textwidth}}{\raggedleft\textbf{Coluna 3}}}
+	\\hline
+	{\multicolumn{1}{p{0.3\textwidth}}{Coluna 1}} &
+	{\multicolumn{1}{p{0.4\textwidth}}{\centering{}Coluna 2}} & 
+	{\multicolumn{1}{p{0.3\textwidth}}{\raggedleft{}Coluna 3}}
+
+	% footnotes
+	\multicolumn{3}{p\textwidth}{\textsuperscript{1} \footnotesize{Nota de rodapé 1}}
+	\multicolumn{3}{p\textwidth}{\textsuperscript{1} \footnotesize{Nota de rodapé 2}}
+}
+
+\end{document}

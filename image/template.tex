@@ -1,0 +1,40 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{lipsum}
+\usepackage{graphicx}
+% \usepackage{array}
+% \usepackage{geometry}
+
+\makeatletter
+
+% includegraphics maxwidth
+\def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}
+
+\begin{document}
+
+\noindent{}\textbf{Exemplo de imagem}\\
+\\ usa o package \textbackslash{graphicx}
+
+% se for onecolumn remover o *
+% \begin{figure}[!ht]
+\begin{figure*}[!ht]
+
+	\centering
+
+	\includegraphics[width=\maxwidth{0.5\textwidth},keepaspectratio]{image.png}
+	\caption{Caption da imagem} 
+	\label{Label da imagem} 
+
+\end{figure*}
+
+\noindent\\
+\noindent Imagem inline\\
+\noindent\\
+\lipsum
+\includegraphics[width=\maxwidth{0.5\textwidth}, height=\textheight,keepaspectratio]{image.png}
+\lipsum
+
+\end{document}
