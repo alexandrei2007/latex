@@ -98,5 +98,20 @@ Para suportar mais é necessário criar uma nova lista:\\
 	\item Item 3
 \end{enumerate}
 
+\noindent\\
+
+\noindent\textbf{Lista sem label e sem margem esquerda}
+\begin{enumerate}[label={},leftmargin=0cm,labelindent=0.5cm]
+	\item Item 1
+	\begin{enumerate}[label={},leftmargin=*,labelindent=0.5cm]
+		\item Item 1.1
+		\begin{enumerate}[label={},leftmargin=*,labelindent=0.5cm]
+			\item Item 1.1.1
+		\end{enumerate}
+		\item Item 1.2
+	\end{enumerate}
+	\item Item 2
+	\item Item 3
+\end{enumerate}
 
 \end{document}
