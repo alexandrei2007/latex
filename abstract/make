@@ -1,0 +1,19 @@
+#!/bin/bash
+
+latexfile="template.tex"
+
+if [ ! -z $1 ]; then
+	latexfile="$1"
+fi
+
+filename=$( echo $latexfile | sed -r "s/\.tex//gi")
+
+rm *.pdf 2> /dev/null
+rm *.aux 2> /dev/null
+
+latexmk -xelatex $latexfile
+
+if [ -f "$filename.pdf" ]; then
+	evince "$filename.pdf"
+fi
+
