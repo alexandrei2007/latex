@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#table=$(cat unicode-math-table.tex | cut -d % -f 2 | sed -r 's/"//gi')
+
+
+if [ -f resultado.txt ]; then
+	$(rm resultado.txt) 
+fi
+
+while read -r linha ; do
+  
+  	item=$(echo $linha | cut -d % -f 2 | sed -r 's/"//gi')
+
+  	c=$(curl -s http://www.scarfboy.com/coding/unicode-tool?s=$item | grep '<span style="font-size:300%">' | sed -r "s/.*300%\">(.+)<\/span>.*/\1/gi")
+
+  	r=$(echo $linha | sed -r "s/\{\""$item"\}/\{"$c"\}/gi")
+
+  	if [ -z "$r" ]; then
+  		echo "error on $linha"
+  		echo "error on $linha" >> resultado.txt	
+  	else
+  		echo "$r"
+  		echo "$r" >> resultado.txt
+  	fi
+  	
+
+done < unicode-math-table.tex
+
+
+
