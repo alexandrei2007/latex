@@ -1,0 +1,98 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+
+\usepackage{longtable}
+\usepackage{caption}
+\usepackage{pdflscape}
+\usepackage{multirow}
+
+% multirow (rowspan) problem - texto maior que as colunas do rowspan
+% overflow do texto
+% solução manual: http://tex.stackexchange.com/questions/98955/auto-resize-tabular-row-height
+
+% problema 2 - conteúdo da coluna maior que o tamanho da página
+% o conteúdo não quebra para a outra página
+
+\makeatletter
+
+
+% definicao das colunas
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\makeatother
+
+\begin{document}
+
+\lipsum[2]
+
+
+%\begin{landscape}
+
+%\begin{table}[h] 
+%\centering
+\begin{longtable}
+{| L{.20\textwidth} | C{.50\textwidth} | R{.30\textwidth} |} 
+
+\hline
+1 Xroin fermentum massa ac quam.
+Sed diam turpis, molestie vitae, placerat a, molestie nec, leo.
+Maecenas lacinia. Nam ipsum ligula & Donec nonummy pellentesque ante. Phasel-lus adipiscing semper elit. Proin fermentum massa ac quam.
+Sed diam turpis, molestie vitae, placerat a, molestie nec, leo.
+Maecenas lacinia. Nam ipsum ligula, eleifend at, accumsan
+nec, suscipit a, ipsum. Morbi blandit ligula feugiat magna.
+Nunc eleifend consequat & right \\ \hline 
+2 foo & bar & right \\ \hline
+3 foo & bar & right \\ \hline
+4 foo & bar & right \\ \hline
+5 foo & bar & right \\ \hline
+\multicolumn{1}{|L{.20\textwidth}|}{8 Nam ipsum ligula \& Donec nonummy pellentesque ante. Phasellus adipiscing semper elit. Proin fermentum massa ac quam.ed diam turpis, molestie vitae, placerat a, molestie nec, leo.Maecenas lacinia} & bar & right \\ \hline
+9 foo & bar & right \\ \hline
+10 foo & \multicolumn{1}{C{.50\textwidth}|}{Nam ipsum ligula \& Donec nonummy pellentesque ante. Phasellus adipiscing semper elit. Proin fermentum massa ac quam.ed diam turpis, molestie vitae, placerat a, molestie nec, leo.Maecenas lacinia} & right \\ \hline
+11 foo & bar & right \\ \hline
+12 foo & bar & right \\ \hline
+13 foo & bar & right \\ \hline
+14 foo & \multicolumn{2}{C{.80\textwidth}|}{\lipsum[2]} \\ \hline
+\multicolumn{2}{C{.70\textwidth}|}{15 foo} & \lipsum[2] \\ \hline
+\multicolumn{3}{C{\textwidth}|}{16 foo} \\ \hline
+17 foo & bar & right \\ \hline
+{18 \lipsum[21]xxx} & bar & right \\ \hline
+19 foo & bar & right \\ \hline
+20 foo & \lipsum[3] & right \\ \hline
+21 foo & bar & right \\ \hline
+22 foo & bar & right \\ \hline
+23 foo & bar & right \\ \hline
+24 foo & bar & right \\ \hline
+25 foo & bar & right \\ \hline
+\multirow{2}{*}{\parbox{0.20\textwidth}\lipsum[2]} & bar aa & right aa\\[150pt] \\ \hline
+%\multirow{2}{*}{\begin{minipage}{0.5in}\lipsum[1]\end{minipage}} & bar aa & right aa \\ \hline
+& bar bb  & right bb\\[150pt] \\ \hline
+27 foo cc  & bar cc & right cc\\ \hline
+28 foo & bar & right \\ \hline
+29 foo & bar & right \\ \hline
+foo & bar & right \\ \hline
+foo & bar & right \\ \hline
+foo & bar & right \\ \hline
+foo & bar & right \\ \hline
+foo & bar & right \\ \hline
+foo & bar & right \\ \hline
+foo & bar & right \\ \hline
+foo & bar & right \\ \hline
+foo & bar & right \\ \hline
+99 foo & bar & right \\ \hline
+100 foo & bar & right \\ \hline
+\caption{Your caption here} % needs to go inside longtable environment
+\label{tab:myfirstlongtable}
+\end{longtable}
+%\end{table} 
+
+%\end{landscape}
+
+\lipsum[2]
+
+\end{document}
