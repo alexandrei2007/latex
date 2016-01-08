@@ -1,0 +1,9 @@
+\def\@fnsymbol#1{
+     \ensuremath{
+         \ifcase#1
+\or ~
+\or §
+         \fi
+     }
+}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
